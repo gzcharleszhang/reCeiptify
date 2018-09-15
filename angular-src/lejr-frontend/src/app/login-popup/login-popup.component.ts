@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import {MatDialogRef} from "@angular/material";
 
 @Component({
   selector: 'app-login-popup',
@@ -9,7 +11,7 @@ export class LoginPopupComponent implements OnInit {
 
   public username : string;
 
-  constructor() {
+  constructor(private router: Router, private dialog: MatDialogRef<LoginPopupComponent>) {
   }
 
   ngOnInit() {
@@ -19,7 +21,17 @@ export class LoginPopupComponent implements OnInit {
 
   onLoginClick() {
 
-    localStorage.setItem("user", this.username);
+    if (this.username === "Isabella") {
+      localStorage.setItem("user", this.username);
+
+      this.router.navigateByUrl("upload").then(next => {
+        this.dialog.close();
+      });
+    }
+
+    else if (this.username === "Sean") {
+      localStorage.setItem("user", this.username);
+    }
   }
 
 }

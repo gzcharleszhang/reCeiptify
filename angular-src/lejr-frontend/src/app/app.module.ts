@@ -16,6 +16,7 @@ import { UploadReceiptComponent } from './upload-receipt/upload-receipt.componen
 
 
 const routes : Routes = [
+  {path: "upload", component: UploadReceiptComponent},
   {path: "**", component: HomePageComponent}
 ];
 
