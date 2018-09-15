@@ -14,9 +14,9 @@ module.exports = {
       .then((snapshot) => {
         const amount = snapshot.val().amountOweing;
         const currency = 'CAD';
-        if (amount === 0) {
-          res.json({});
-        }
+        // if (amount === 0) {
+        //   res.json({});
+        // }
 
         axios.post(tdUrl, {
           fromAccountID,
@@ -35,6 +35,42 @@ module.exports = {
               id: transactionId,
             };
             console.log(transaction);
+            const INTUIT_URL = `https://sandbox-quickbooks.api.intuit.com/v3/company/${process.env.INTUIT_REALM_ID}/journalentry`
+            axios.post(INTUIT_URL, {
+              Line: [
+                {
+                  Id: 0,
+                  Description: 'Employee Reimbursement',
+                  Amount: amount,
+                  DetailType: 'JournalEntryLineDetail',
+                  JournalEntryLineDetail: {
+                    PostingType: 'Debit',
+                    AccountRef: {
+                      value: '96',
+                      name: 'Sales Expense',
+                    }
+                  }
+                },
+                {
+                  Description: 'Employee Reimbursement',
+                  Amount: amount,
+                  DetailType: 'JournalEntryLineDetail',
+                  JournalEntryLineDetail: {
+                    PostingType: 'Credit',
+                    AccountRef: {
+                      value: '97',
+                      name: 'Cash on Hand',
+                    }
+                  }
+                }
+              ]
+            }, {
+              headers: { Authorization: `bearer ${process.env.INTUIT_ACCESS_TOKEN}` },
+            })
+            .then(payment => console.log(payment))
+            .catch(err => {
+              console.log(err.response.data.Fault)
+            });
             db.ref('/users/' + userId).set({ amountOweing: 0 })
             db.ref('/transactions/' + transactionId).set(transaction)
               .then(() => res.json(transaction));
