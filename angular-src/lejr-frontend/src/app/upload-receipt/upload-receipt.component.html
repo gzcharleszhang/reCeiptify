@@ -4,7 +4,7 @@
       <h1 class="mt-5">Add a new receipt</h1>
       <p class="lead">Then we'll parse it for you using Machine Learning and OCR.</p>
 
-      <input id="photo" type="file" accept=".png, .jpg" class="upload-btn">
+      <input id="photo" type="file" accept=".png, .jpg" class="upload-btn" (change)="onFileChosen($event)">
     </div>
   </div>
 </body>
