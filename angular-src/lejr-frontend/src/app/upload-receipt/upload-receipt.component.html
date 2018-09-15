@@ -33,8 +33,13 @@
                 <ng-container *ngFor="let item of imageFields.lineItems">
                   <p class="small">{{item.text}}</p>
                 </ng-container>
+              </div>
+            </div>
 
-                <button mat-button (click)="onSplitClick()">Split Receipt</button>
+            <div class="row">
+              <div class="col-md-offset-8"></div>
+              <div class="col-md-4">
+                <button mat-button (click)="onSplitClick()" class="split-btn">Split Receipt</button>
               </div>
             </div>
           </div>
