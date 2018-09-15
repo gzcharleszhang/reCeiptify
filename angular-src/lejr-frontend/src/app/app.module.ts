@@ -8,7 +8,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FirebaseModule, FirebaseProvider} from "angular-firebase";
 import {FirebaseService} from "./services/firebase.service";
 import {MatButtonModule} from "@angular/material";
+import {MatDialogModule} from '@angular/material/dialog';
 import { HomePageComponent } from './home-page/home-page.component';
+import { LoginPopupComponent } from './login-popup/login-popup.component';
+
 
 const routes : Routes = [
   {path: "**", component: HomePageComponent}
@@ -17,7 +20,8 @@ const routes : Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent
+    HomePageComponent,
+    LoginPopupComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -25,9 +29,11 @@ const routes : Routes = [
     BrowserAnimationsModule,
     FirebaseModule,
     MatButtonModule,
+    MatDialogModule,
     NgbModule
   ],
   providers: [FirebaseProvider, FirebaseService],
+  entryComponents: [LoginPopupComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
