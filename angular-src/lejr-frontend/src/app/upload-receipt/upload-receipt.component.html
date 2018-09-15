@@ -28,7 +28,7 @@
               <div class="col-md-6">
                 <h1 class="mt-5">Receipt Fields</h1>
                 <p class="lead">Merchant name: {{imageFields.merchantName}}</p>
-                <p class="lead">Total Amount: {{imageFields.amount}}</p>
+                <p class="lead">Total Amount (in CAD): $ {{imageFields.amount}}</p>
                 <h1 class="mt-5">Breakdown: </h1>
                 <ng-container *ngFor="let item of imageFields.lineItems">
                   <p class="small">{{item.text}}</p>

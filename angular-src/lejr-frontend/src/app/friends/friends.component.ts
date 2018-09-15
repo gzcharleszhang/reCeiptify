@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FirebaseService} from "../services/firebase.service";
 import {ExpensesService} from "../services/expenses.service";
+import {MatDialog} from "@angular/material";
+import {PaymentPopupComponent} from "../payment-popup/payment-popup.component";
 
 @Component({
   selector: 'app-friends',
@@ -13,7 +15,9 @@ export class FriendsComponent implements OnInit {
 
   public isIsabella : boolean;
 
-  constructor(private fbService: FirebaseService, private expenseService: ExpensesService) {
+  constructor(private fbService: FirebaseService,
+               private expenseService: ExpensesService,
+               private dialog: MatDialog) {
     this.seanAmountOwing = 0;
 
     this.isIsabella = (localStorage.getItem("user") === "Isabella")
@@ -27,8 +31,13 @@ export class FriendsComponent implements OnInit {
 
   onPayClick() {
     this.expenseService.transferMoney().subscribe(response => {
-      console.log(response);
+
+      const dialogRef = this.dialog.open(PaymentPopupComponent, {
+        data: response
+      });
     });
   }
+
+
 
 }
