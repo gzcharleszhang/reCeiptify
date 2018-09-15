@@ -7,16 +7,9 @@ import {FirebaseService} from "./services/firebase.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'lejr-frontend';
 
-  constructor(private fbService: FirebaseService) {
+  constructor() {
 
-  }
-
-  onUploadClick(event) {
-    let file = event.target.files[0];
-
-    this.fbService.uploadFile(file, "jack");
   }
 
 }
