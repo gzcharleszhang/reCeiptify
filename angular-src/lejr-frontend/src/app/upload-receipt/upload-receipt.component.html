@@ -1,0 +1,45 @@
+<body>
+  <div class="body">
+    <div class="container">
+
+      <ng-container *ngIf="!fileChoosen">
+        <h1 class="mt-5">Add a new receipt</h1>
+        <p class="lead">Then we'll parse it for you using Machine Learning and OCR.</p>
+
+        <input id="photo" type="file" accept=".png, .jpg" class="upload-btn" (change)="onFileChosen($event)">
+      </ng-container>
+
+      <ng-container *ngIf="fileChoosen">
+        <h1 class="mt-5">Upload Success</h1>
+        <p class="lead">Processing Receipt</p>
+
+        <ng-container *ngIf="!ocrDone">
+          <mat-spinner></mat-spinner>
+        </ng-container>
+
+        <ng-container *ngIf="ocrDone">
+
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <img [src]="imgUrl" style="max-width: 100%">
+              </div>
+
+              <div class="col-md-6">
+                <h1 class="mt-5">Receipt Fields</h1>
+                <p class="lead">Merchant name: {{imageFields.merchantName}}</p>
+                <p class="lead">Total Amount: {{imageFields.amount}}</p>
+                <h1 class="mt-5">Breakdown: </h1>
+                <ng-container *ngFor="let item of imageFields.lineItems">
+                  <p class="small">{{item.text}}</p>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</body>
+

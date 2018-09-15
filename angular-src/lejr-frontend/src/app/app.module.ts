@@ -7,14 +7,18 @@ import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FirebaseModule, FirebaseProvider} from "angular-firebase";
 import {FirebaseService} from "./services/firebase.service";
-import {MatButtonModule} from "@angular/material";
+import {MatButtonModule, MatProgressSpinnerModule} from "@angular/material";
 import {MatDialogModule} from '@angular/material/dialog';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPopupComponent } from './login-popup/login-popup.component';
 import {FormsModule} from "@angular/forms";
+import { UploadReceiptComponent } from './upload-receipt/upload-receipt.component';
+import {ExpensesService} from "./services/expenses.service";
+import {HttpClientModule} from "@angular/common/http";
 
 
 const routes : Routes = [
+  {path: "upload", component: UploadReceiptComponent},
   {path: "**", component: HomePageComponent}
 ];
 
@@ -22,7 +26,8 @@ const routes : Routes = [
   declarations: [
     AppComponent,
     HomePageComponent,
-    LoginPopupComponent
+    LoginPopupComponent,
+    UploadReceiptComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -31,10 +36,12 @@ const routes : Routes = [
     FirebaseModule,
     MatButtonModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
     FormsModule,
+    HttpClientModule,
     NgbModule
   ],
-  providers: [FirebaseProvider, FirebaseService],
+  providers: [FirebaseProvider, FirebaseService, ExpensesService],
   entryComponents: [LoginPopupComponent],
   bootstrap: [AppComponent]
 })

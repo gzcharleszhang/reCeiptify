@@ -1,0 +1,33 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background-color: #63D13E;
+  background-size: cover;
+  height: 100%;
+  padding: 1px;
+}
+
+.body {
+  height: 100vh;
+  color: #333333;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.container {
+  width: auto;
+  max-width: 680px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.upload-btn {
+  padding-top: 5%;
+}

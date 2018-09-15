@@ -26,29 +26,8 @@ export class FirebaseService {
     this.storage = firebase.storage();
   }
 
-  uploadFile(file : File, name: string) {
+  createFileReference(file : File, name: string) {
 
-    const randomId = Math.random().toString(36).substring(2);
-
-    let reference = this.storage.ref("images/" + randomId);
-
-    // upload the file to C L O U D S T O R A G E
-    reference.put(file).then(snapshot => {
-
-      // get the download url
-      reference.getDownloadURL().then(response => {
-
-        // put the meta data in the database
-        this.database.ref("images/" + name).push({
-          imageId: randomId,
-          date: Date.now(),
-          url: response
-        }).then(response => {
-          // do nothing for now
-        });
-      });
-    });
-
-
+    return this.storage.ref("images/" + name);
   }
 }
