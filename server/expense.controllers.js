@@ -1,6 +1,7 @@
 const { default: axios } = require('axios');
 const firebase = require('firebase');
 const shortid = require('shortid');
+const _ = require('lodash');
 
 module.exports = {
   recordExpenses: (req, res, next) => {
@@ -30,6 +31,18 @@ module.exports = {
               })
               .catch(err => console.log(err));
           })
+        } else if (data.totalAmount.text.toLowerCase().includes('chf')) {
+          expensePromise = expensePromise.then(() => {
+            return axios.get(`${XEURL}?from=CHF&to=CAD&amount=${amount}`,
+              { auth: { username: process.env.XE_USERNAME, password: process.env.XE_PASSWORD } })
+              .then(currencyRes => {
+                const { data } = currencyRes;
+                originalCurrency = 'CHF';
+                originalAmount = amount;
+                amount = data.to[0].mid.toFixed(2);
+              })
+              .catch(err => console.log(err));
+          })
         }
         const getLineItems = () => {
           const lineItems = [];
@@ -42,7 +55,7 @@ module.exports = {
               amount: amounts[i].data,
             });
           }
-          return lineItems;
+          return _.uniqBy(lineItems, 'text');
         }
         
         expensePromise = expensePromise.then(() => {
@@ -51,7 +64,7 @@ module.exports = {
             imageUrl: url,
             lineItems: getLineItems(),
             amount,
-            merchantName: data.merchantName.data,
+            merchantName: data.merchantName.data || null,
             originalAmount,
             originalCurrency,
           }
