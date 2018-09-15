@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FirebaseModule, FirebaseProvider} from "angular-firebase";
 import {FirebaseService} from "./services/firebase.service";
-import {MatButtonModule} from "@angular/material";
+import {MatButtonModule, MatProgressSpinnerModule} from "@angular/material";
 import {MatDialogModule} from '@angular/material/dialog';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPopupComponent } from './login-popup/login-popup.component';
@@ -36,6 +36,7 @@ const routes : Routes = [
     FirebaseModule,
     MatButtonModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
     FormsModule,
     HttpClientModule,
     NgbModule

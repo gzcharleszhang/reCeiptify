@@ -12,12 +12,15 @@ export class UploadReceiptComponent implements OnInit {
   public fileChoosen : boolean;
   public ocrDone : boolean;
 
+  public imgUrl : string;
+  public imageFields : any;
 
   constructor(private fbService: FirebaseService, private expenseService: ExpensesService) { }
 
   ngOnInit() {
     this.fileChoosen = false;
     this.ocrDone = false;
+    this.imageFields = null;
   }
 
   onFileChosen(event) {
@@ -34,15 +37,16 @@ export class UploadReceiptComponent implements OnInit {
       fileReference.put(file).then(snapshot => {
 
         // get the download url
-        fileReference.getDownloadURL().then(response => {
+        fileReference.getDownloadURL().then(url => {
+
+          this.imgUrl = url;
 
           // Call the OCR API
-          this.expenseService.createExpense(response).subscribe(res => {
+          this.expenseService.createExpense(url).subscribe(res => {
             console.log(res);
-
+            this.imageFields = res;
             this.ocrDone = true;
           });
-
         });
       });
     }
