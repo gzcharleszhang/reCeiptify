@@ -11,6 +11,7 @@ import {MatButtonModule} from "@angular/material";
 import {MatDialogModule} from '@angular/material/dialog';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPopupComponent } from './login-popup/login-popup.component';
+import {FormsModule} from "@angular/forms";
 
 
 const routes : Routes = [
@@ -30,6 +31,7 @@ const routes : Routes = [
     FirebaseModule,
     MatButtonModule,
     MatDialogModule,
+    FormsModule,
     NgbModule
   ],
   providers: [FirebaseProvider, FirebaseService],
