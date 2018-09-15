@@ -6,10 +6,12 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FirebaseModule, FirebaseProvider} from "angular-firebase";
 import {FirebaseService} from "./services/firebase.service";
 import {MatButtonModule} from "@angular/material";
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
