@@ -42,27 +42,5 @@ module.exports = {
           .catch(err => console.log(err));
       })
       .catch(err => res.json(err));
-  },
-
-  transfer: (req, res, next) => {
-    const { amount, currency, fromAccountId, toAccountId } = req.body;
-    const db = firebase.database();
-    const tdUrl = "https://api.td-davinci.com/api/transfers";
-    const tdKey = process.env.TD_KEY;
-
-    axios.post(tdUrl, { ...req.body, description: 'LEJR' }, { headers: { Authorization: tdKey } })
-      .then((response) => {
-        const { data } = response;
-        const { id: tdTransactionId, ...otherData } = data.result;
-        const transactionId = shortid.generate();
-        const transaction = {
-          ...otherData,
-          tdTransactionId,
-        };
-        console.log(transaction);
-        db.ref('/transactions/' + transactionId).set(transaction)
-          .then(() => res.json(transaction));
-      })
-      .catch(err => console.log(err));
   }
 }
