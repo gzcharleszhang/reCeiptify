@@ -4,7 +4,9 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-server": "nodemon ./server/server.js"
+    "start-server": "nodemon ./server/server.js",
+    "start-ui": "cd ./angular-src/lejr-frontend && yarn ng serve",
+    "start-dev": "concurrently \"yarn start-server\" \"yarn start-ui\""
   },
   "author": "",
   "license": "MIT",
