@@ -1,0 +1,8 @@
+{
+  "/api/expenses": {
+    "target": "http://localhost:8080/api/expenses",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

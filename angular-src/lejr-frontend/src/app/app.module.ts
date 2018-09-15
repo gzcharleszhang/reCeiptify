@@ -13,6 +13,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPopupComponent } from './login-popup/login-popup.component';
 import {FormsModule} from "@angular/forms";
 import { UploadReceiptComponent } from './upload-receipt/upload-receipt.component';
+import {ExpensesService} from "./services/expenses.service";
+import {HttpClientModule} from "@angular/common/http";
 
 
 const routes : Routes = [
@@ -35,9 +37,10 @@ const routes : Routes = [
     MatButtonModule,
     MatDialogModule,
     FormsModule,
+    HttpClientModule,
     NgbModule
   ],
-  providers: [FirebaseProvider, FirebaseService],
+  providers: [FirebaseProvider, FirebaseService, ExpensesService],
   entryComponents: [LoginPopupComponent],
   bootstrap: [AppComponent]
 })
