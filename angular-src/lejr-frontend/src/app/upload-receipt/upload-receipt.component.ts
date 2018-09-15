@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FirebaseService} from "../services/firebase.service";
 import {ExpensesService} from "../services/expenses.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-upload-receipt',
@@ -15,7 +16,9 @@ export class UploadReceiptComponent implements OnInit {
   public imgUrl : string;
   public imageFields : any;
 
-  constructor(private fbService: FirebaseService, private expenseService: ExpensesService) { }
+  constructor(private fbService: FirebaseService,
+               private expenseService: ExpensesService,
+               private router : Router) { }
 
   ngOnInit() {
     this.fileChoosen = false;
@@ -43,13 +46,16 @@ export class UploadReceiptComponent implements OnInit {
 
           // Call the OCR API
           this.expenseService.createExpense(url).subscribe(res => {
-            console.log(res);
             this.imageFields = res;
             this.ocrDone = true;
           });
         });
       });
     }
+  }
+
+  onSplitClick() {
+    this.router.navigateByUrl("friends")
   }
 
 }

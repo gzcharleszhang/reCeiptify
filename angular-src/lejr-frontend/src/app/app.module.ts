@@ -15,10 +15,12 @@ import {FormsModule} from "@angular/forms";
 import { UploadReceiptComponent } from './upload-receipt/upload-receipt.component';
 import {ExpensesService} from "./services/expenses.service";
 import {HttpClientModule} from "@angular/common/http";
+import { FriendsComponent } from './friends/friends.component';
 
 
 const routes : Routes = [
   {path: "upload", component: UploadReceiptComponent},
+  {path: "friends", component: FriendsComponent},
   {path: "**", component: HomePageComponent}
 ];
 
@@ -27,7 +29,8 @@ const routes : Routes = [
     AppComponent,
     HomePageComponent,
     LoginPopupComponent,
-    UploadReceiptComponent
+    UploadReceiptComponent,
+    FriendsComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

@@ -31,6 +31,10 @@ export class LoginPopupComponent implements OnInit {
 
     else if (this.username === "Sean") {
       localStorage.setItem("user", this.username);
+
+      this.router.navigateByUrl("friends").then(next => {
+        this.dialog.close();
+      });
     }
   }
 
