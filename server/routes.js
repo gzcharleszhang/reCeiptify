@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.use('/expenses', controllers.recordExpenses);
 
-// router.use('/transactions', );
+router.use('/transactions/transfer', controllers.transfer);
 
 module.exports = router;

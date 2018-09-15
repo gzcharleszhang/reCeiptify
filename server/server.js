@@ -20,7 +20,7 @@ app.use(cors());
 
 // firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyCbdv7JsEMaBkdaj5406baxNv0aOJJwuKk",
+  apiKey: process.env.FIREBASE_KEY,
   authDomain: "lejr2firebase.firebaseapp.com",
   databaseURL: "https://lejr2firebase.firebaseio.com",
   projectId: "lejr2firebase",
