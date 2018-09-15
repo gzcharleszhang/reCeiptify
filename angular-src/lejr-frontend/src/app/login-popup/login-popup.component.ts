@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPopupComponent implements OnInit {
 
-  constructor() { }
+  public username : string;
+
+  constructor() {
+  }
 
   ngOnInit() {
+
+    this.username = "";
+  }
+
+  onLoginClick() {
+
+    localStorage.setItem("user", this.username);
   }
 
 }
