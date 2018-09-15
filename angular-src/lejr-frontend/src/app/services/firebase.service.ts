@@ -7,8 +7,8 @@ import * as firebase from 'firebase'
 })
 export class FirebaseService {
 
-  database : firebase.database.Database;
-  storage : firebase.storage.Storage;
+  private database : firebase.database.Database;
+  private storage : firebase.storage.Storage;
 
   constructor() {
     const config = {
@@ -32,15 +32,23 @@ export class FirebaseService {
 
     let reference = this.storage.ref("images/" + randomId);
 
+    // upload the file to C L O U D S T O R A G E
     reference.put(file).then(snapshot => {
-      this.database.ref("images/" + name).push({
-        imageId: randomId,
-        date: Date.now()
-      }).then(response => {
-        this.database.ref("images/" + name).once("value").then(response => {
-          console.log(response.val());
-        })
+
+      // get the download url
+      reference.getDownloadURL().then(response => {
+
+        // put the meta data in the database
+        this.database.ref("images/" + name).push({
+          imageId: randomId,
+          date: Date.now(),
+          url: response
+        }).then(response => {
+          // do nothing for now
+        });
       });
     });
+
+
   }
 }
