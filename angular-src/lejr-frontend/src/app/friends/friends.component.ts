@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FirebaseService} from "../services/firebase.service";
 
 @Component({
   selector: 'app-friends',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FriendsComponent implements OnInit {
 
-  constructor() { }
+  public seanAmountOwing : number;
+
+  public isIsabella : boolean;
+
+  constructor(private fbService: FirebaseService) {
+    this.seanAmountOwing = 0;
+
+    this.isIsabella = (localStorage.getItem("user") === "Isabella")
+  }
 
   ngOnInit() {
+    this.fbService.getAmountsOweing().on("value", snapshot => {
+      this.seanAmountOwing = snapshot.val().amountOweing;
+    });
   }
 
 }

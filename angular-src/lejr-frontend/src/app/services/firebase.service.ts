@@ -10,6 +10,9 @@ export class FirebaseService {
   private database : firebase.database.Database;
   private storage : firebase.storage.Storage;
 
+  private readonly BUYER_USER_ID = "7291e7e8-1da3-4c23-8594-795f67fa5a65_9de7e105-36ff-4151-9b52-35607f4c50bb";
+  private readonly PAYER_USER_ID = "7291e7e8-1da3-4c23-8594-795f67fa5a65_39e0dc13-14d5-4b5c-af5a-49b1dcef34ed";
+
   constructor() {
     const config = {
       apiKey: "AIzaSyCbdv7JsEMaBkdaj5406baxNv0aOJJwuKk",
@@ -29,5 +32,9 @@ export class FirebaseService {
   createFileReference(file : File, name: string) {
 
     return this.storage.ref("images/" + name);
+  }
+
+  getAmountsOweing() {
+    return this.database.ref("/users/" + this.PAYER_USER_ID);
   }
 }
