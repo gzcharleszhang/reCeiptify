@@ -12,6 +12,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPopupComponent } from './login-popup/login-popup.component';
 import {FormsModule} from "@angular/forms";
+import { UploadReceiptComponent } from './upload-receipt/upload-receipt.component';
 
 
 const routes : Routes = [
@@ -22,7 +23,8 @@ const routes : Routes = [
   declarations: [
     AppComponent,
     HomePageComponent,
-    LoginPopupComponent
+    LoginPopupComponent,
+    UploadReceiptComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
