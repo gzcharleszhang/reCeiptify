@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FirebaseModule, FirebaseProvider} from "angular-firebase";
 import {FirebaseService} from "./services/firebase.service";
-import {MatButtonModule, MatProgressSpinnerModule} from "@angular/material";
+import {MatButtonModule, MatCardModule, MatProgressSpinnerModule} from "@angular/material";
 import {MatDialogModule} from '@angular/material/dialog';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPopupComponent } from './login-popup/login-popup.component';
@@ -16,6 +16,7 @@ import { UploadReceiptComponent } from './upload-receipt/upload-receipt.componen
 import {ExpensesService} from "./services/expenses.service";
 import {HttpClientModule} from "@angular/common/http";
 import { FriendsComponent } from './friends/friends.component';
+import { PaymentPopupComponent } from './payment-popup/payment-popup.component';
 
 
 const routes : Routes = [
@@ -30,7 +31,8 @@ const routes : Routes = [
     HomePageComponent,
     LoginPopupComponent,
     UploadReceiptComponent,
-    FriendsComponent
+    FriendsComponent,
+    PaymentPopupComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -39,13 +41,14 @@ const routes : Routes = [
     FirebaseModule,
     MatButtonModule,
     MatDialogModule,
+    MatCardModule,
     MatProgressSpinnerModule,
     FormsModule,
     HttpClientModule,
     NgbModule
   ],
   providers: [FirebaseProvider, FirebaseService, ExpensesService],
-  entryComponents: [LoginPopupComponent],
+  entryComponents: [LoginPopupComponent, PaymentPopupComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
