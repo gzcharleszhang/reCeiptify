@@ -7,6 +7,7 @@ import {HttpClient} from "@angular/common/http";
 export class ExpensesService {
 
   private readonly CREATE_EXPENSE_ENDPOINT = "http://localhost:8080/api/expenses";
+  private readonly TRANSACT_ENDPOINT = "http://localhost:8080/api/transactions/transfer";
 
   private readonly BUYER_USER_ID = "7291e7e8-1da3-4c23-8594-795f67fa5a65_9de7e105-36ff-4151-9b52-35607f4c50bb";
   private readonly PAYER_USER_ID = "7291e7e8-1da3-4c23-8594-795f67fa5a65_39e0dc13-14d5-4b5c-af5a-49b1dcef34ed";
@@ -26,6 +27,28 @@ export class ExpensesService {
       };
 
       return this.http.post(this.CREATE_EXPENSE_ENDPOINT, body);
+    }
+
+    else {
+      return null;
+    }
+  }
+
+  transferMoney() {
+
+    if (localStorage.getItem("user") === "Sean") {
+      const fromAccountID = this.PAYER_ACCOUNT_ID;
+      const toAccountID = this.BUYER_ACCOUNT_ID;
+
+      const userId = this.PAYER_USER_ID;
+
+      let body = {
+        fromAccountID: fromAccountID,
+        toAccountID: toAccountID,
+        userId: userId
+      };
+
+      return this.http.post(this.TRANSACT_ENDPOINT, body);
     }
 
     else {
