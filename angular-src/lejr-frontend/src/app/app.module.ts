@@ -16,6 +16,7 @@ import { UploadReceiptComponent } from './upload-receipt/upload-receipt.componen
 import {ExpensesService} from "./services/expenses.service";
 import {HttpClientModule} from "@angular/common/http";
 import { FriendsComponent } from './friends/friends.component';
+import { PaymentPopupComponent } from './payment-popup/payment-popup.component';
 
 
 const routes : Routes = [
@@ -30,7 +31,8 @@ const routes : Routes = [
     HomePageComponent,
     LoginPopupComponent,
     UploadReceiptComponent,
-    FriendsComponent
+    FriendsComponent,
+    PaymentPopupComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -45,7 +47,7 @@ const routes : Routes = [
     NgbModule
   ],
   providers: [FirebaseProvider, FirebaseService, ExpensesService],
-  entryComponents: [LoginPopupComponent],
+  entryComponents: [LoginPopupComponent, PaymentPopupComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
