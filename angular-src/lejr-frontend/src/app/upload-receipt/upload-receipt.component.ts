@@ -43,7 +43,6 @@ export class UploadReceiptComponent implements OnInit {
 
           // Call the OCR API
           this.expenseService.createExpense(url).subscribe(res => {
-            console.log(res);
             this.imageFields = res;
             this.ocrDone = true;
           });
