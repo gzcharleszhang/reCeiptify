@@ -71,9 +71,14 @@ module.exports = {
           console.log(expense);
           return db.ref('expenses/' + expenseId).set(expense)
             .then(() => {
-              db.ref('users/7291e7e8-1da3-4c23-8594-795f67fa5a65_39e0dc13-14d5-4b5c-af5a-49b1dcef34ed')
-                .set({ amountOweing: (amount / 2).toFixed(2) });
-              res.json({ ...expense, expenseId })
+              const userRef = db.ref('users/7291e7e8-1da3-4c23-8594-795f67fa5a65_39e0dc13-14d5-4b5c-af5a-49b1dcef34ed');
+              userRef.once('value')
+                .then((user) => {
+                  const { amountOweing } = user.val();
+                  db.ref('users/7291e7e8-1da3-4c23-8594-795f67fa5a65_39e0dc13-14d5-4b5c-af5a-49b1dcef34ed')
+                    .set({ amountOweing: (Number.parseFloat(amountOweing) + (amount / 2)).toFixed(2) })
+                      .then(() => res.json({ ...expense, expenseId }));
+                })
             })
             .catch(err => console.log(err));
         });
