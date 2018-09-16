@@ -10,7 +10,7 @@ require('dotenv').config();
 const app = express();
 
 const router = require('./routes');
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 app.listen(port, () => {
   console.log(`running at localhost: ${port}`);
