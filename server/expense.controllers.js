@@ -86,6 +86,6 @@ module.exports = {
         
         return expensePromise;
       })
-      .catch(err => res.json(err));
+      .catch(err => console.log(err));
   }
 }
