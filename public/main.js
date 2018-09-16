@@ -523,8 +523,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var ExpensesService = /** @class */ (function () {
     function ExpensesService(http) {
         this.http = http;
-        this.CREATE_EXPENSE_ENDPOINT = "http://localhost:8080/api/expenses";
-        this.TRANSACT_ENDPOINT = "http://localhost:8080/api/transactions/transfer";
+        this.CREATE_EXPENSE_ENDPOINT = "/api/expenses";
+        this.TRANSACT_ENDPOINT = "/api/transactions/transfer";
         this.BUYER_USER_ID = "7291e7e8-1da3-4c23-8594-795f67fa5a65_9de7e105-36ff-4151-9b52-35607f4c50bb";
         this.PAYER_USER_ID = "7291e7e8-1da3-4c23-8594-795f67fa5a65_39e0dc13-14d5-4b5c-af5a-49b1dcef34ed";
         this.BUYER_ACCOUNT_ID = "7291e7e8-1da3-4c23-8594-795f67fa5a65_74461df2-7b46-4c5e-a538-815ac6a9ae1c";

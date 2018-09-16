@@ -6,8 +6,8 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ExpensesService {
 
-  private readonly CREATE_EXPENSE_ENDPOINT = "http://localhost:8080/api/expenses";
-  private readonly TRANSACT_ENDPOINT = "http://localhost:8080/api/transactions/transfer";
+  private readonly CREATE_EXPENSE_ENDPOINT = "/api/expenses";
+  private readonly TRANSACT_ENDPOINT = "/api/transactions/transfer";
 
   private readonly BUYER_USER_ID = "7291e7e8-1da3-4c23-8594-795f67fa5a65_9de7e105-36ff-4151-9b52-35607f4c50bb";
   private readonly PAYER_USER_ID = "7291e7e8-1da3-4c23-8594-795f67fa5a65_39e0dc13-14d5-4b5c-af5a-49b1dcef34ed";
