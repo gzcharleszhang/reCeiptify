@@ -86,6 +86,6 @@ module.exports = {
         
         return expensePromise;
       })
-      .catch(err => res.json({ error: 'Not a image' }));
+      .catch(err => res.json({ error: 'Cannot parse receipt' }));
   }
 }
