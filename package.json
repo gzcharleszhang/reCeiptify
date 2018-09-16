@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-server": "nodemon ./server/server.js",
     "start-ui": "cd ./angular-src/lejr-frontend && yarn ng serve",
-    "start-dev": "concurrently \"yarn start-server\" \"yarn start-ui\""
+    "start-dev": "concurrently \"yarn start-server\" \"yarn start-ui\"",
+    "start-prod": "NODE_ENV=production nodemon ./server/server.js"
   },
   "author": "",
   "license": "MIT",

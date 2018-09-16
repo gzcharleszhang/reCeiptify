@@ -1,1 +1,1 @@
-web: nodemon ./server/server.js
+web: NODE_ENV=production nodemon ./server/server.js
