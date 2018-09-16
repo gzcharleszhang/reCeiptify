@@ -13,6 +13,7 @@ module.exports = {
     axios.post(TaggunURL, { url }, { headers: { apikey: process.env.TAGGUN_KEY } })
       .then((response) => {
         const { data } = response;
+        console.log(data);
         const expenseId = shortid.generate();
         const { amounts } = data;
         let amount = data.totalAmount.data || null;
@@ -85,6 +86,6 @@ module.exports = {
         
         return expensePromise;
       })
-      .catch(err => res.json(err));
+      .catch(err => res.json({ error: 'Cannot parse receipt' }));
   }
 }
