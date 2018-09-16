@@ -86,6 +86,6 @@ module.exports = {
         
         return expensePromise;
       })
-      .catch(err => console.log(err));
+      .catch(err => res.json({ error: 'Not a image' }));
   }
 }
