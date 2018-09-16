@@ -59,4 +59,9 @@ export class UploadReceiptComponent implements OnInit {
     this.router.navigateByUrl("friends")
   }
 
+  onResetClick() {
+    this.fileChoosen = false;
+    this.ocrDone = false;
+  }
+
 }
