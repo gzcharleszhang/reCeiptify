@@ -1,5 +1,9 @@
 # re:Ceiptify - Winner of Hack the North 2018 API Prizes
 
+## Prizes won at Hack the North 2018
+- Intuit Quickbooks Online API Prize
+- XE.com Currency Data API Prize
+
 ## Inspiration
 At UofTHacks V, we built Lejr, an app that allows you to request money from your friends using "inverse" e-transfers, so you don't have to remind them to pay you back. This inspired us to build something greater, for both expanding towards both personal and enterprise uses.
 
@@ -23,7 +27,3 @@ Figuring out OAuth took a while when we were trying to integrate Intuit QuickBoo
 
 ## What's next for re:Ceiptify
 - Enabling the parsing of invoices and other accounting documentations for enterprise solutions
-
-## Prizes won at Hack the North 2018
-- Intuit Quickbooks Online API Prize
-- XE.com Currency Data API Prize
